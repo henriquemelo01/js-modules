@@ -46,4 +46,32 @@ const shoppingCart2 = (function () {
 shoppingCart2.addToCart('pizza', 3);
 console.log(shoppingCart2.shippingCost); //undefined, private
 
-//
+//CommumJSModules - * Have been used in NodeJs (Running JS on a web server outside of a browser) ****
+
+// Modulos que são gerados pelo npm estão neste formato, npm foi criado para o node, entretanto passou-se a utiliza-lo em todas as aplicações usando js
+
+// One filed is one module
+// export.addToCart3 = function (item, qtd) {
+//     console.log(`${qtd} ${item} ordered from cart 🛒`);
+//     cart.push({ item, qtd });
+//   };
+
+// // Import
+// const { addToCart3 } = require("./shoppingCart.js")
+
+// Importando função do modulo loadash-es que faz um clone de um objeto
+import cloneObj from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+  cart: [
+    { item: 'apple', qtd: 5 },
+    { item: 'pizza', qtd: 2 },
+  ],
+  user: { loggedIn: true },
+};
+console.log(state);
+
+const stateClone = cloneObj(state);
+stateClone.user.loggedIn = false;
+console.log(stateClone);
+console.log(state);
